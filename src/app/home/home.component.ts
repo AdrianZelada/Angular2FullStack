@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   isEditing = false;
 
   addCatForm: FormGroup;
+  userForm : FormGroup;
   name = new FormControl('', Validators.required);
   age = new FormControl('', Validators.compose([Validators.required,Validators.pattern('^[0-9]+$')]));
   weight = new FormControl('', Validators.required);
@@ -31,11 +32,19 @@ export class HomeComponent implements OnInit {
               private dataService: DataService,
               private settingsService: SettingsService,
               public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+    this.userForm=formBuilder.group({
+        name:new FormControl('',Validators.required),
+        lastName:new FormControl('',Validators.required),
+        birthday:new FormControl('',Validators.required),
+        email:new FormControl('',Validators.required),
+        nickName:new FormControl('',Validators.required),
+      }
+    )
+  }
 
   ngOnInit() {
     this.getUsers();
-    // this.getCats();
 
     this.addCatForm = this.formBuilder.group({
       name: this.name,
@@ -55,14 +64,14 @@ export class HomeComponent implements OnInit {
 
 
   getUsers() {
-    this.usersService.getAll().subscribe(
+    this.usersService.$getAll().subscribe(
       (data)=>{
         console.log(data)
       },
       error => console.log(error),
       () => this.isLoading = false
     );
-    this.settingsService.getAll().subscribe(
+    this.settingsService.$getAll().subscribe(
       (data)=>{
         console.log(data)
       });
@@ -74,6 +83,17 @@ export class HomeComponent implements OnInit {
     //   error => console.log(error),
     //   () => this.isLoading = false
     // );
+  }
+
+  addUser(){
+    this.usersService.$add(this.userForm.value).subscribe(
+      res=>{
+        console.log(res)
+      },
+      error=>{
+        console.error(error)
+      }
+    )
   }
 
   addCat() {

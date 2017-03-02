@@ -57,20 +57,94 @@
   </div>
 </div>
 
-<div class="card" *ngIf="!isEditing">
-  <h4 class="card-header">Add new cat</h4>
+<!--<div class="card" *ngIf="!isEditing">-->
+  <!--<h4 class="card-header">Add new cat</h4>-->
+  <!--<div class="card-block">-->
+    <!--<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()" style="text-align:center">-->
+      <!--<div class="form-group">-->
+          <!--<input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<input class="form-control" type="text" name="age" formControlName="age" placeholder="Age" min="0">-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">-->
+      <!--</div>-->
+      <!--<button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-floppy-o"></i> Add</button>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<div class="card" >
+  <h4 class="card-header">Add new User</h4>
   <div class="card-block">
-    <form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()" style="text-align:center">
-      <div class="form-group">
+    <div class="col-xs-2"></div>
+
+    <form class="form-horizontal col-xs-8" [formGroup]="userForm" (ngSubmit)="addUser()" style="text-align:center">
+      <div class="" style="margin-top: 10px;">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10" >
           <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 10px;">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" name="lastName" formControlName="lastName" placeholder="Last Names">
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 10px;">
+        <label class="col-sm-2 control-label">Birthday</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="date" name="birthday" formControlName="birthday" placeholder="Last Names">
+        </div>
+      </div>
+
+      <div class="" style="margin-top: 10px;">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email" >
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label class="col-sm-2 control-label">Nickname</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" name="nickName" formControlName="nickName" placeholder="Nick Name">
+        </div>
+      </div>
+    </form>
+<div class="col-xs-2"></div>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+        </div>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="age" formControlName="age" placeholder="Age" min="0">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+        </div>
       </div>
       <div class="form-group">
-        <input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Sign in</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>

@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   cat = {};
   isEditing = false;
 
+  users=[];
+
   addCatForm: FormGroup;
   userForm : FormGroup;
   name = new FormControl('', Validators.required);
@@ -66,6 +68,8 @@ export class HomeComponent implements OnInit {
   getUsers() {
     this.usersService.$getAll().subscribe(
       (data)=>{
+
+        this.users=data;
         console.log(data)
       },
       error => console.log(error),

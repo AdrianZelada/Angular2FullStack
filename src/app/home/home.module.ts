@@ -3,4 +3,3 @@
  */
 import { NgModule } from '@angular/core';
 
-import { VehicleButtonComponent } from './shared/vehicle-button/vehicle-button.component';

@@ -4,9 +4,11 @@
 import { Subscription } from 'rxjs/Subscription';
 
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
+import { SharedData } from '../../services/shared-data.service';
 
-
+import {user} from '../services/user.model'
 
 
 @Component({
@@ -22,21 +24,23 @@ export class UsersListComponent implements OnInit{
 
   name:string = 'hola Adri';
 
-  users=[];
-  constructor(private usersService:UsersService){
+  users : user[];
+
+  constructor(
+    private usersService:UsersService,
+    private router:Router,
+    public shared:SharedData
+  ){
   }
 
 
   ngOnInit(){
-    console.log('users')
     this.getUsers();
   }
 
   getUsers(){
-    console.log('start')
-    console.log(this.isLoading)
     this.isLoading = true;
-    this.usersService.$getAll().subscribe(
+    this.usersService.$getAll<user>().subscribe(
       (data)=>{
         this.users=data;
         console.log(data)
@@ -46,5 +50,28 @@ export class UsersListComponent implements OnInit{
         console.log(error);
         this.isLoading = false;
       })
+  }
+
+  addUser(){
+    this.router.navigate(['users/abm']);
+    this.shared.setData({})
+  }
+
+  editUser(user){
+    this.router.navigate(['users/abm'],{
+      queryParams:{
+        id:user.sid
+      }
+    });
+
+    this.shared.setData(user)
+  }
+
+  deleteUser(user){
+    this.usersService.$delete(user.sid).subscribe(
+      (data)=>{
+        this.getUsers();
+      }
+    )
   }
 }

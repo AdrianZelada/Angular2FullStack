@@ -3,7 +3,7 @@
  */
 
 import { Injectable,Inject } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http,Response, Headers, RequestOptions } from '@angular/http';
 //
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -17,25 +17,35 @@ export class ParentService {
 
   }
 
-  $getAll() : Observable<any> {
-    return this.http.get(this.model).map(res => res.json());
+  $getAll<T>() {
+    return  this.http.get(this.model)
+      .map(res => this.extractData<T[]>(res));
   }
+
+  // $getAll() : Observable<any> {
+  //   return this.http.get(this.model).map(res => res.json());
+  // }
 
   $add(obj):Observable<any>{
     return this.http.post(this.model,obj,this.options)
   }
 
-  //
-  // addCat(cat): Observable<any> {
-  //   return this.http.post('/cat', JSON.stringify(cat), this.options);
-  // }
-  //
-  // editCat(cat): Observable<any> {
-  //   return this.http.put(`/cat/${cat._id}`, JSON.stringify(cat), this.options);
-  // }
-  //
-  // deleteCat(cat): Observable<any> {
-  //   return this.http.delete(`/cat/${cat._id}`, this.options);
-  // }
+  $edit(obj,key): Observable<any> {
+    obj['_key']=key;
+    return this.http.put(this.model, obj,this.options);
+  }
+
+  $delete(key) : Observable<any> {
+    return this.http.delete(this.model+`/${key}`,this.options);
+  }
+
+
+  private extractData<T>(res: Response) {
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error('Bad response status: ' + res.status);
+    }
+    let body = res.json ? res.json() : null;
+    return <T>(body || {});
+  }
 
 }

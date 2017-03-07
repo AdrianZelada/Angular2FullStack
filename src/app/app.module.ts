@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {appRoutingModule} from './app-routing.module';
+import { appRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import {CommonModule} from '@angular/common';
 

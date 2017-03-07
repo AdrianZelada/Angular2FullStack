@@ -8,7 +8,9 @@
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Current Users ({{users.length}}) </h4>
+  <div class="card-header">
+    <h4>Current Users ({{users.length}}) </h4>
+  </div>
   <div class="card-block">
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
@@ -39,25 +41,6 @@
           </td>
         </tr>
       </tbody>
-      <!--<tbody *ngIf="isEditing">-->
-        <!--<tr>-->
-          <!--<td colspan="4">-->
-            <!--<form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)" style="display:inline">-->
-              <!--<div class="form-group">-->
-                  <!--<input class="form-control" type="text" name="name" [(ngModel)]="cat.name" placeholder="Name" required>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--<input class="form-control" type="number" name="age" [(ngModel)]="cat.age" placeholder="Age" min="0" required>-->
-              <!--</div>-->
-              <!--<div class="form-group">-->
-                <!--<input class="form-control" type="number" name="weight" [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>-->
-              <!--</div>-->
-              <!--<button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>-->
-            <!--</form>-->
-            <!--<button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>-->
-          <!--</td>-->
-        <!--</tr>-->
-      <!--</tbody>-->
     </table>
   </div>
 </div>

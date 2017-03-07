@@ -8,7 +8,11 @@
 
 
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Current Users ({{users.length}}) </h4>
+  <div class="card-header">
+    <h4 class="col-md-10 header-title" >Current Users ({{users.length}}) </h4>
+    <button class="btn btn-sm btn-success col-md-2" (click)="addUser()"><i class="fa fa-plus"></i> Add </button>
+  </div>
+  <!--<h4 class="card-header">Current Users ({{users.length}}) </h4>-->
   <div class="card-block">
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
@@ -34,8 +38,8 @@
         <td>{{user.email}}</td>
         <td>{{user.nickName}}</td>
         <td>
-          <button class="btn btn-sm btn-warning" (click)="enableEditing(user)"><i class="fa fa-pencil"></i> Edit</button>
-          <button class="btn btn-sm btn-danger" (click)="deleteCat(user)"><i class="fa fa-trash"></i> Delete</button>
+          <button class="btn btn-sm btn-warning" (click)="editUser(user)"><i class="fa fa-pencil"></i> Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user)"><i class="fa fa-trash"></i> Delete</button>
         </td>
       </tr>
       </tbody>

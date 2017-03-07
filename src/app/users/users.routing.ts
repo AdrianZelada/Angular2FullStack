@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UsersListComponent} from './users.list/users-list.component';
+import { UserComponent } from './user/user.component';
 import { UsersComponents} from './users.component';
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: '',
         component: UsersListComponent,
+      },
+      {
+        path: 'abm',
+        component: UserComponent,
       }
     ]
   },
@@ -23,4 +28,4 @@ const routes: Routes = [
 })
 export class UsersRoutingModule { }
 
-export const routedComponents = [UsersComponents,UsersListComponent];
+export const routedComponents = [UsersComponents,UsersListComponent, UserComponent];

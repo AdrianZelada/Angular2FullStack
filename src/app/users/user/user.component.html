@@ -33,4 +33,6 @@
       </div>
     </form>
   </div>
+
+  <dynamic-form [fields]="fields" (send)="save($event);"></dynamic-form>
 </div>

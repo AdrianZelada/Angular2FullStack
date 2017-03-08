@@ -4,15 +4,19 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { UsersService} from  '../services/users.service';
+import { UserFormService} from  '../services/userForm.service';
 import { SharedData } from  '../../services/shared-data.service';
 import { ActivatedRoute, Router} from '@angular/router';
+
+import {DynamicFormComponent} from '../../components/form'
 
 
 
 
 @Component({
   selector:'user',
-  templateUrl:'./user.component.html'
+  templateUrl:'./user.component.html',
+  providers:  [UserFormService]
 })
 
 export class UserComponent implements OnInit{
@@ -21,6 +25,7 @@ export class UserComponent implements OnInit{
   userForm : FormGroup;
 
   stateBtn : boolean=false;
+  fields:any[];
 
   stateUser:string ='status status';
   constructor(
@@ -28,9 +33,16 @@ export class UserComponent implements OnInit{
     public usersService : UsersService,
     public routes:ActivatedRoute,
     public router:Router,
-    private shared:SharedData
+    private shared:SharedData,
+    private formUse:UserFormService
   ){
     this.stateBtn=false;
+    this.fields=formUse.getFields({
+      username:'asdasd',
+      email:'zelada.torrez@hotmail.com',
+      gender:'male',
+      birthdate:"2017-03-16"
+    });
   }
 
   ngOnInit() {
@@ -78,6 +90,12 @@ export class UserComponent implements OnInit{
 
   cancel(){
     this.router.navigate(['users']);
+  }
+
+  save(object) {
+
+    // Here you can save the object
+    console.log(object);
   }
 
 }

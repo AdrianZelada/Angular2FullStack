@@ -10,12 +10,13 @@ import { SharedData } from '../services/shared-data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {FormControlService,DynamicFormComponent,DynamicFormFieldComponent} from '../components/form'
+// import {FormControlService,DynamicFormComponent,DynamicFormFieldComponent,inputForm,selectForm} from '../components/form'
+import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form'
 
 
 @NgModule({
   imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule],
-  declarations: [routedComponents,DynamicFormComponent,DynamicFormFieldComponent],
+  declarations: [routedComponents,DynamicFormComponent,FormComponents],
   providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService]
 })
 export class UsersModule { }

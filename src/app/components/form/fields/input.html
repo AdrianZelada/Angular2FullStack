@@ -1,0 +1,11 @@
+<!--template bootstrap-->
+
+<div *ngIf="tpl=='bootstrap'" [formGroup]="form" class="form-group">
+  <label [attr.for]="field.key" class="control-label">{{field.label}}</label>
+    <input [formControlName]="field.key" [value]="field.value" [id]="field.key" [type]="field.type"
+           class="form-control" [placeholder]="field.placeholder" [disabled]="field.disabled" [readonly]="field.readonly">
+  <div style="color: red;" *ngIf="!isValid()">({{field.label}} is required)</div>
+</div>
+
+
+

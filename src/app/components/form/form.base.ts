@@ -2,11 +2,6 @@
  * Created by iZel on 3/8/17.
  */
 
-import { Component, Injectable, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-
-
-
 export class FormBase<T>{
   value:T;
   key:string;

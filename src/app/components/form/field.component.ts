@@ -9,23 +9,50 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector:'df-field',
   template:`
-<div [formGroup]="form" class="form-group">
-  <label [attr.for]="field.key" class="control-label">{{field.label}}</label>
   <div [ngSwitch]="field.controlType">
-    <input *ngSwitchCase="'textbox'" [formControlName]="field.key" [value]="field.value" [id]="field.key" [type]="field.type" class="form-control" [placeholder]="field.placeholder" [disabled]="field.disabled" [readonly]="field.readonly">
-    <select [id]="field.key" *ngSwitchCase="'dropdown'" [formControlName]="field.key" class="form-control" [value]="field.value">
-      <option style="display:none" value="">Choose an option</option>
-      <option *ngFor="let opt of field.options" [value]="opt.key">{{opt.value}}</option>
-    </select>
-  </div>
-  <div style="color: red;" *ngIf="!isValid()">({{field.label}} is required)</div>
-</div>`,
+    <input-form *ngSwitchCase="'textbox'" [field]="field" [form]="form" [tpl]="tpl"></input-form>
+    <select-form *ngSwitchCase="'dropdown'" [field]="field" [form]="form" [tpl]="tpl"></select-form>
+  </div>`,
   providers:[ReactiveFormsModule,CommonModule]
 
 })
 export class DynamicFormFieldComponent {
   @Input() field:FormBase<any>;
   @Input() form:FormGroup;
-  // get isValid() { return this.form.controls[this.field.key].valid; }
-  isValid() { return this.form.controls[this.field.key].valid; }
+  @Input() tpl:string;
+
 }
+
+class ParentComponent{
+  @Input() field:FormBase<any>;
+  @Input() form:FormGroup;
+  @Input() tpl:string;
+  isValid() { return this.form.controls[this.field.key].valid; }
+  constructor(){}
+}
+
+@Component(
+  {
+    selector:'input-form',
+    templateUrl:'./fields/input.html'
+  }
+)
+export class inputForm extends ParentComponent{
+  constructor(){
+    super();
+  }
+}
+
+@Component(
+  {
+    selector:'select-form',
+    templateUrl:'./fields/select.html'
+  }
+)
+export class selectForm extends ParentComponent{
+  constructor(){
+    super();
+  }
+}
+
+export const FormComponents = [DynamicFormFieldComponent,inputForm,selectForm];

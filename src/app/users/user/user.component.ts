@@ -1,16 +1,12 @@
 /**
  * Created by iZel on 3/6/17.
  */
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit,AfterViewInit, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { UsersService} from  '../services/users.service';
 import { UserFormService} from  '../services/userForm.service';
 import { SharedData } from  '../../services/shared-data.service';
 import { ActivatedRoute, Router} from '@angular/router';
-
-import {DynamicFormComponent} from '../../components/form'
-
-
 
 
 @Component({
@@ -26,6 +22,7 @@ export class UserComponent implements OnInit{
 
   stateBtn : boolean=false;
   fields:any[];
+  styleForm:string ='bootstrap';
 
   stateUser:string ='status status';
   constructor(
@@ -37,12 +34,6 @@ export class UserComponent implements OnInit{
     private formUse:UserFormService
   ){
     this.stateBtn=false;
-    this.fields=formUse.getFields({
-      username:'asdasd',
-      email:'zelada.torrez@hotmail.com',
-      gender:'male',
-      birthdate:"2017-03-16"
-    });
   }
 
   ngOnInit() {
@@ -61,6 +52,13 @@ export class UserComponent implements OnInit{
     Object.keys(this.userForm.controls).forEach((val)=>{
       this.userForm.controls[val].patchValue(this.user[val]);
     });
+    this.fields=this.formUse.getFields({
+      username:this.user['name'] || '',
+      email:this.user['email']|| '',
+      gender:'male'|| '',
+      birthdate:this.user['birthday']|| ''
+    })
+
   }
 
   addUser(){
@@ -96,6 +94,15 @@ export class UserComponent implements OnInit{
 
     // Here you can save the object
     console.log(object);
+  }
+
+  change(object) {
+    if(object instanceof Event){
+
+    }else{
+      console.log(object);
+    }
+    // Here you can save the object
   }
 
 }

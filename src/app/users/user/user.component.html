@@ -34,5 +34,15 @@
     </form>
   </div>
 
-  <dynamic-form [fields]="fields" (send)="save($event);"></dynamic-form>
+
+
+  <div class="card-block">
+    <form class="form-horizontal col-xs-8" [formGroup]="userForm" (ngSubmit)="addUser()">
+      <div class="form-group " style="margin-top: 10px;">
+        <dynamic-form [tpl]="styleForm" [fields]="fields" (send)="save($event);" (change)="change($event);"></dynamic-form>
+      </div>
+    </form>
+  </div>
+
+
 </div>

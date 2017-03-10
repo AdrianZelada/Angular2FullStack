@@ -12,6 +12,7 @@ export class FormBase<T>{
   order:number;
   controlType:string;
   placeholder:string;
+  options?:any[];
   constructor(options:{
     value?:T,
     key?:string,
@@ -32,6 +33,10 @@ export class FormBase<T>{
     this.order = options.order === undefined ? 1 : options.order;
     this.controlType = options.controlType || '';
     this.placeholder = options.placeholder || '';
+  }
+
+  setOptions ( newOptions : any[]){
+    this.options = newOptions;
   }
 }
 
@@ -58,5 +63,9 @@ export class DropdownField extends FormBase<string>{
     super(options);
     this.options = options['options'] || [];
   }
+
+
+
+
 }
 

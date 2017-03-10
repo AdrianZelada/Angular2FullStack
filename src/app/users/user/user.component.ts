@@ -1,7 +1,7 @@
 /**
  * Created by iZel on 3/6/17.
  */
-import { Component, Input, OnInit,AfterViewInit, QueryList, TemplateRef, ViewChild, ViewChildren, ViewContainerRef} from '@angular/core';
+import { Component, Output, OnInit, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { UsersService} from  '../services/users.service';
 import { UserFormService} from  '../services/userForm.service';
@@ -17,10 +17,15 @@ import { ActivatedRoute, Router} from '@angular/router';
 
 export class UserComponent implements OnInit{
 
+  // @Output() getResultForm: EventEmitter<any> = new EventEmitter();
+
   user:Object={};
   userForm : FormGroup;
+  form : FormGroup;
 
   stateBtn : boolean=false;
+  valid : boolean=false;
+  run : boolean=false;
   fields:any[];
   styleForm:string ='bootstrap';
 
@@ -52,12 +57,19 @@ export class UserComponent implements OnInit{
     Object.keys(this.userForm.controls).forEach((val)=>{
       this.userForm.controls[val].patchValue(this.user[val]);
     });
-    this.fields=this.formUse.getFields({
-      username:this.user['name'] || '',
-      email:this.user['email']|| '',
-      gender:'male'|| '',
-      birthdate:this.user['birthday']|| ''
-    })
+    this.fields=this.formUse.getFields();
+
+    this.form=this.formBuilder.group({
+      username:new FormControl(this.user['name'] || '',Validators.required),
+      email:new FormControl(this.user['email']|| '',Validators.required),
+      gender:new FormControl('male'|| '',Validators.required),
+      birthdate:new FormControl(this.user['birthday']|| '',Validators.required)
+    });
+
+
+    this.form.valueChanges.subscribe((...data:any[]) => {
+      console.log(data)
+    });
 
   }
 
@@ -90,19 +102,13 @@ export class UserComponent implements OnInit{
     this.router.navigate(['users']);
   }
 
-  save(object) {
-
-    // Here you can save the object
-    console.log(object);
+  saveBtn(){
+    console.log(this.form.value);
   }
 
-  change(object) {
-    if(object instanceof Event){
-
-    }else{
-      console.log(object);
-    }
-    // Here you can save the object
+  changeOpt(){
+    this.formUse.setOptions(2)
   }
+
 
 }

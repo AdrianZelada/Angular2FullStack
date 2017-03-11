@@ -12,7 +12,9 @@ export class FormBase<T>{
   order:number;
   controlType:string;
   placeholder:string;
-  options?:any[];
+  options:any[];
+  rows:number;
+  class:string;
   constructor(options:{
     value?:T,
     key?:string,
@@ -35,9 +37,9 @@ export class FormBase<T>{
     this.placeholder = options.placeholder || '';
   }
 
-  setOptions ( newOptions : any[]){
-    this.options = newOptions;
-  }
+  // setOptions ( newOptions : any[]){
+  //   this.options = newOptions;
+  // }
 }
 
 //////////////////////////////////////////////////
@@ -64,8 +66,33 @@ export class DropdownField extends FormBase<string>{
     this.options = options['options'] || [];
   }
 
+  setOptions ( newOptions : any[]){
+    this.options = newOptions;
+  }
+}
 
 
+export class TextAreaField extends FormBase<string>{
+  controlType = 'textArea';
 
+  constructor(options:{} = {}){
+    super(options);
+    this.rows = options['rows'] || 5;
+  }
+}
+
+export class RadioField extends FormBase<string>{
+  controlType = 'radio';
+  options:{
+    key:string,
+    value:string,
+    disabled:boolean,
+    readonly:boolean
+  }[] = [];
+
+  constructor(options:{} = {}){
+    super(options);
+    this.options = options['options'] || [];
+  }
 }
 

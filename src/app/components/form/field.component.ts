@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
   <div [ngSwitch]="field.controlType">
     <input-form *ngSwitchCase="'textbox'" [field]="field" [form]="form" [tpl]="tpl"></input-form>
     <select-form *ngSwitchCase="'dropdown'" [field]="field" [form]="form" [tpl]="tpl"></select-form>
+    <textarea-form *ngSwitchCase="'textArea'" [field]="field" [form]="form" [tpl]="tpl"></textarea-form>
+    <radio-form *ngSwitchCase="'radio'" [field]="field" [form]="form" [tpl]="tpl"></radio-form>
   </div>`,
   providers:[ReactiveFormsModule,CommonModule]
 
@@ -55,4 +57,29 @@ export class selectForm extends ParentComponent{
   }
 }
 
-export const FormComponents = [DynamicFormFieldComponent,inputForm,selectForm];
+@Component(
+  {
+    selector:'textarea-form',
+    templateUrl:'./fields/textarea.html'
+  }
+)
+export class textareaForm extends ParentComponent{
+  constructor(){
+    super();
+  }
+}
+
+@Component(
+  {
+    selector:'radio-form',
+    templateUrl:'./fields/checkbox.html'
+  }
+)
+export class radioForm extends ParentComponent{
+  constructor(){
+    super();
+  }
+}
+
+
+export const FormComponents = [DynamicFormFieldComponent,inputForm,selectForm,textareaForm,radioForm];

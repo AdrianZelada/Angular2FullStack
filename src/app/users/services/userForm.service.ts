@@ -4,14 +4,15 @@
 
 import { Injectable } from '@angular/core';
 
-import { FormBase, TextboxField, DropdownField } from '../../components/form';
+import { FormBase, TextboxField, DropdownField ,TextAreaField,RadioField} from '../../components/form';
 
 //////////////////////////////////////////////////
 
 @Injectable()
 export class UserFormService {
 
-  fields:FormBase<any>[] = [
+  // fields:(FormBase<any>[] = [
+  fields:any[] = [
 
   new TextboxField({
     key:'username',
@@ -47,13 +48,38 @@ export class UserFormService {
     required: true,
     placeholder: 'Birthdate',
     order: 4
+  }),
+
+  new TextAreaField({
+    key:'comment',
+    label:'Comment',
+    required: true,
+    placeholder: 'Comment',
+    rows: 3
+  }),
+    new RadioField({
+    key:'send',
+    label:'Send For',
+    // class:'checkbox-inline',
+    class:'radio',
+    options:[
+      {
+        key:0,
+        value:'Sms',
+        disabled:false,
+        readonly:false
+      },
+      {
+        key:1,
+        value:'Email',
+        disabled:false,
+        readonly:false
+      }
+    ]
   })
 ];
 
   constructor() {}
-
-
-
 
   getFields() {
     return this.fields.sort((a,b) => a.order - b.order);

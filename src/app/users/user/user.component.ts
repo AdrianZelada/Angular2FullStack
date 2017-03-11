@@ -17,8 +17,6 @@ import { ActivatedRoute, Router} from '@angular/router';
 
 export class UserComponent implements OnInit{
 
-  // @Output() getResultForm: EventEmitter<any> = new EventEmitter();
-
   user:Object={};
   userForm : FormGroup;
   form : FormGroup;
@@ -57,10 +55,16 @@ export class UserComponent implements OnInit{
     Object.keys(this.userForm.controls).forEach((val)=>{
       this.userForm.controls[val].patchValue(this.user[val]);
     });
+
+
+
+
     this.fields=this.formUse.getFields();
 
     this.form=this.formBuilder.group({
       username:new FormControl(this.user['name'] || '',Validators.required),
+      comment:new FormControl(this.user['comment'] || '',Validators.required),
+      send:new FormControl(this.user['send'] || '',Validators.required),
       email:new FormControl(this.user['email']|| '',Validators.required),
       gender:new FormControl('male'|| '',Validators.required),
       birthdate:new FormControl(this.user['birthday']|| '',Validators.required)

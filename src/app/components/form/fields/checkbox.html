@@ -1,0 +1,11 @@
+
+<div *ngIf="tpl=='bootstrap'" [formGroup]="form" class="form-group">
+  <label class="control-label">{{field.label}}</label>
+  <br>
+  <div [class]="field.class" *ngFor="let opt of field.options">
+    <label>
+      <input type="radio" [value]="opt.key" [formControlName]="field.key" [disabled]="opt.disabled" [readonly]="opt.readonly">{{opt.value}}
+    </label>
+  </div>
+
+</div>

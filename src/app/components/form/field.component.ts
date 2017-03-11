@@ -72,7 +72,7 @@ export class textareaForm extends ParentComponent{
 @Component(
   {
     selector:'radio-form',
-    templateUrl:'./fields/checkbox.html'
+    templateUrl:'./fields/radio.html'
   }
 )
 export class radioForm extends ParentComponent{

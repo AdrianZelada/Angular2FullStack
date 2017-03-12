@@ -42,6 +42,7 @@ export class UserComponent implements OnInit{
   ngOnInit() {
     this.user = this.shared.getData();
 
+    this.stateBtn = this.user['sid'] != undefined;
     this.fields=this.formUse.getFields();
 
     this.form=this.formBuilder.group({

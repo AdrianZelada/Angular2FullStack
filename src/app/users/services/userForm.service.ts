@@ -15,11 +15,27 @@ export class UserFormService {
   fields:any[] = [
 
   new TextboxField({
-    key:'username',
+    key:'name',
     label:'Name',
     required: true,
-    placeholder: 'Username',
+    placeholder: 'Name',
     order: 1
+  }),
+
+  new TextboxField({
+    key:'lastName',
+    label:'Last Name',
+    required: true,
+    placeholder: 'Last Name',
+    order: 2
+  }),
+
+  new TextboxField({
+    key:'nickName',
+    label:'Nick name',
+    required: true,
+    placeholder: 'Nick',
+    order: 3
   }),
 
   new TextboxField({
@@ -28,7 +44,7 @@ export class UserFormService {
     type: 'email',
     required: true,
     placeholder: 'Email',
-    order: 2
+    order: 4
   }),
 
   new DropdownField({
@@ -39,47 +55,18 @@ export class UserFormService {
       {key:'female',  value:'female'}
     ],
     required: true,
-    order: 3
+    order: 5
   }),
 
   new TextboxField({
     // classField:'col-md-6',
-    key:'birthdate',
+    key:'birthday',
     label:'Birthdate',
     type: 'date',
     required: true,
     placeholder: 'Birthdate',
-    order: 4
+    order: 6
   }),
-
-  new TextAreaField({
-    key:'comment',
-    label:'Comment',
-    required: true,
-    placeholder: 'Comment',
-    rows: 3
-  }),
-    new RadioField({
-    key:'send',
-    label:'Send For',
-    // class:'checkbox-inline',
-    class:'radio',
-    required: true,
-    options:[
-      {
-        key:0,
-        value:'Sms',
-        disabled:false,
-        readonly:false
-      },
-      {
-        key:1,
-        value:'Email',
-        disabled:false,
-        readonly:false
-      }
-    ]
-  })
 ];
 
   constructor() {}

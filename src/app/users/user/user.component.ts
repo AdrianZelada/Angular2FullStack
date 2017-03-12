@@ -18,7 +18,6 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class UserComponent implements OnInit{
 
   user:Object={};
-  userForm : FormGroup;
   form : FormGroup;
 
   stateBtn : boolean=false;
@@ -26,7 +25,7 @@ export class UserComponent implements OnInit{
   run : boolean=false;
   fields:any[];
   styleForm:string ='bootstrap';
-  containerClass:string ='col-md-4';
+  containerClass:string ='col-md-6';
 
   stateUser:string ='status status';
   constructor(
@@ -42,33 +41,16 @@ export class UserComponent implements OnInit{
 
   ngOnInit() {
     this.user = this.shared.getData();
-    this.userForm=this.formBuilder.group({
-        name:new FormControl('',Validators.required),
-        lastName:new FormControl('',Validators.required),
-        birthday:new FormControl('',Validators.required),
-        email:new FormControl('',Validators.required),
-        nickName:new FormControl('',Validators.required),
-      }
-    );
-    if(this.user['sid']){
-      this.stateBtn=true;
-    }
-    Object.keys(this.userForm.controls).forEach((val)=>{
-      this.userForm.controls[val].patchValue(this.user[val]);
-    });
-
-
-
 
     this.fields=this.formUse.getFields();
 
     this.form=this.formBuilder.group({
-      username:new FormControl(this.user['name'] || '',Validators.required),
-      comment:new FormControl(this.user['comment'] || '',Validators.required),
-      send:new FormControl(this.user['send'] || '',Validators.required),
+      name:new FormControl(this.user['name'] || '',Validators.required),
+      lastName:new FormControl(this.user['lastName'] || '',Validators.required),
+      nickName:new FormControl(this.user['nickName'] || '',Validators.required),
       email:new FormControl(this.user['email']|| '',Validators.required),
       gender:new FormControl('male'|| '',Validators.required),
-      birthdate:new FormControl(this.user['birthday']|| '',Validators.required)
+      birthday:new FormControl(this.user['birthday']|| '',Validators.required)
     });
 
 
@@ -80,7 +62,7 @@ export class UserComponent implements OnInit{
 
   addUser(){
     if(this.stateBtn){
-      Object.assign(this.user,this.userForm.value)
+      Object.assign(this.user,this.form.value);
       this.usersService.$edit(this.user,'sid').subscribe(
         res=>{
           this.router.navigate(['users']);
@@ -91,7 +73,7 @@ export class UserComponent implements OnInit{
         }
       )
     }else{
-      this.usersService.$add(this.userForm.value).subscribe(
+      this.usersService.$add(this.form.value).subscribe(
         res=>{
           this.router.navigate(['users']);
           console.log(res)

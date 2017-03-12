@@ -15,6 +15,7 @@ export class FormBase<T>{
   options:any[];
   rows:number;
   class:string;
+  pattern:string;
   classField:string;
   constructor(options:{
     value?:T,
@@ -39,10 +40,6 @@ export class FormBase<T>{
     this.controlType = options.controlType || '';
     this.placeholder = options.placeholder || '';
   }
-
-  // setOptions ( newOptions : any[]){
-  //   this.options = newOptions;
-  // }
 }
 
 //////////////////////////////////////////////////
@@ -55,6 +52,11 @@ export class TextboxField extends FormBase<string>{
   constructor(options:{} = {}){
     super(options);
     this.type = options['type'] || '';
+    if(this.type=='email'){
+      this.pattern="^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w+)+$";
+    }else{
+      this.pattern="";
+    }
   }
 }
 

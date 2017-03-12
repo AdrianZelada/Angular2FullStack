@@ -1,9 +1,10 @@
 <!--template bootstrap-->
 
-<div [formGroup]="form" class="form-group" *ngIf="tpl=='bootstrap'">
+<div [formGroup]="form" class="form-group" *ngIf="tpl=='bootstrap'" [class]="field.classField">
   <label [attr.for]="field.key" class="control-label">{{field.label}}</label>
   <select [id]="field.key" [formControlName]="field.key" class="form-control">
     <option style="display:none" value="">Choose an option</option>
     <option *ngFor="let opt of field.options" [value]="opt.key">{{opt.value}}</option>
   </select>
+  <div class="message-error" *ngIf="!isValid()">({{field.label}} is required)</div>
 </div>

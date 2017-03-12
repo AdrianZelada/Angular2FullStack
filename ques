@@ -1,0 +1,144 @@
+
+<!---->
+<!--    Cada nuevo término en la secuencia de fibonacci es generado adicionando los anteriores dos términos.-->
+<!---->
+<!--    1, 2, 3, 5, 8, 13, 21, 34, 55, 89,....-->
+<!---->
+<!--    Considerando los términos en la secuencia de fibonacci, cuyos valores no excedan al valor n, encuentra la suma de los términos pares-->
+<!---->
+<!---->
+<!---->
+<!--    por ejemplo: para n=30 tomamos los números de la secuencia menores a 30 y que sean pares , estos son el 2 y el 8-->
+<!---->
+<!---->
+<!---->
+//
+//function SumaFibonacci($n){
+//
+//    return algo;
+//
+//}
+//
+//
+//echo SumaFibonacci(30);	10
+//echo SumaFibonacci(150);	188
+//
+//////////
+//
+//
+//Existen números que son divisibles entre otros varios números. Por ejemplo, el número 60 es el número más pequeño que es divisible por cada número del 1 al 5 (es decir, es divisible entre 1, 2, 3,4 ,5).
+//
+//Escribe una función Numero_divisible en PHP para calcular cuál es el número más pequeño que puede ser divisible por todos los números entre 1 y n. con 0< n <20
+//
+//
+//
+//
+//
+
+//function  Numero_divisible($n){
+//
+//    return $respuesta;
+//
+//}
+//
+//
+//
+//
+//
+//
+//Nota: no cerrar el código php con '?>', no usar la salida estándar echo dentro de la función
+//
+//
+//For example:
+//
+//    Test	Result
+//echo Numero_divisible(5);   	60
+//echo Numero_divisible(18);	12252240
+//
+//
+//
+/////////
+//
+//
+//
+//Realice una función matriz_suma que dada una matriz de cinco filas y cinco columnas y que realice las siguientes operaciones:
+//
+//Recorrer los elementos de la 1ra diagonal (posiciones: 0,0 - 1,1 - 2,2 - 3,3 - 4,4) sumar los valores que sean menores a 5 cuyo valor del lado derecho es par y valor del lado izquierdo es impar (si no existe elemento a la izquierda o derecha asumir 5)
+//Recorrer los elementos de la 2da diagonal (posiciones: 0,4 - 1,3 - 2,2 - 3,1 - 4,0) contar los items si el valor pertenece a la serie de fibonacci.
+//Finalmente sumar los resultados de las diagonales y retornar el resultado
+//Especificaciones:
+//
+//La función debe tener el nombre "matriz_suma".
+//El parámetro que recibe la función es un array de 5x5.
+//La función debe retornar el resultado con la sentencia return.
+//Ej.
+//
+//1  2 -3  4  5
+//4  5  8  7  4
+//0  2  5  4 -1
+//2  5 -7  3  2
+//7  5  8  7 -4
+//
+//Diagonal 1: 1, 5, 5, 3, -4 Suma de valores 1 y 3 cumplen las reglas, total 4
+//
+//Diagonal 2: 5, 7, 5, 5, 7 Conteo de valores en fibonacci total 3
+//
+//Resultado de la función 7
+//
+//Nota: no cerrar el código php con '?>', no usar la salida estándar echo dentro de la función
+//
+//Nota 2: No debe imprimir ningún carácter.
+//
+//For example:
+//
+//Test	Result
+//echo matriz_suma(array(array( 1, 2, -3,  4,  5 ),array( 4, 5,  8,  7,  4 ),array( 0, 2,  5,  4, -1 ),array( 2, 5, -7,  3,  2 ),array( 7, 5,  8,  7, -4 ))); 7
+//
+//
+//
+//
+//////////////
+//
+//
+//
+//
+//Desarrollar una función rotar_array que dado un vector de longitud n y cantidad x, roté 'x' veces los elementos del vector de derecha a izquierda.
+//
+//Especificaciones:
+//
+//La función debe tener el nombre "rotar_array"
+//La función debe recibir 2 parámetros:
+//$vector: vector de longitud n
+//
+//$x: cantidad de rotaciones
+//
+//La función debe retornar el vector con las rotaciones con la sentencia return
+//
+//    Ej.
+//
+//    vector => 1, 2, 3, 4, 5
+//
+//x = 1 resultado => 5, 1, 2, 3, 4
+//
+//x = 2 resultado => 4, 5, 1, 2, 3
+//
+//x = 3 resultado => 3, 4, 5, 1, 2
+//
+//Nota: no cerrar el código php con '?>', no usar la salida estándar echo dentro de la función
+//
+//Nota 2: No debe imprimir ningún carácter.
+//
+//For example:
+//
+//Test	Result
+//print_r( rotar_array( array(1,2,3,4,5), 2 ) );	Array
+//(
+//    [0] => 4
+//    [1] => 5
+//    [2] => 1
+//    [3] => 2
+//    [4] => 3
+//)
+
+
+/////////////////

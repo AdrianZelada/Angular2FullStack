@@ -39,7 +39,7 @@
   <div class="card-block">
     <form class="form-horizontal col-xs-8">
       <div class="form-group " style="margin-top: 10px;">
-        <dynamic-form [tpl]="styleForm" [fields]="fields" [form]="form"></dynamic-form>
+        <dynamic-form [tpl]="styleForm" [fields]="fields" [form]="form" [containerClass]="containerClass"></dynamic-form>
 
         <button (click)="saveBtn()" [disabled]="!form.valid"> OK</button>
         <button (click)="changeOpt()" > set</button>

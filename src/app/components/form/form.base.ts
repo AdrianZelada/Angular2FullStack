@@ -15,12 +15,14 @@ export class FormBase<T>{
   options:any[];
   rows:number;
   class:string;
+  classField:string;
   constructor(options:{
     value?:T,
     key?:string,
     label?:string,
     required?:boolean,
     readonly?:boolean,
+    classField?:string;
     disabled?:boolean,
     order?:number,
     controlType?:string,
@@ -29,6 +31,7 @@ export class FormBase<T>{
     this.value = options.value;
     this.key = options.key || '';
     this.label = options.label || '';
+    this.classField = options.classField || '';
     this.required = !!options.required;
     this.readonly = !!options.readonly;
     this.disabled = !!options.disabled;

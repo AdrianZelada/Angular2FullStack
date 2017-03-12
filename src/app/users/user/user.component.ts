@@ -26,6 +26,7 @@ export class UserComponent implements OnInit{
   run : boolean=false;
   fields:any[];
   styleForm:string ='bootstrap';
+  containerClass:string ='col-md-4';
 
   stateUser:string ='status status';
   constructor(

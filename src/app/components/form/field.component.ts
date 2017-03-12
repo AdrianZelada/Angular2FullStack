@@ -2,7 +2,7 @@
  * Created by iZel on 3/8/17.
  */
 
-import {Component,Input} from '@angular/core';
+import {Component,Input,ViewEncapsulation} from '@angular/core';
 import { FormGroup,  Validators,ReactiveFormsModule} from '@angular/forms';
 import { FormBase} from './form.base'
 import { CommonModule } from '@angular/common';
@@ -22,6 +22,8 @@ export class DynamicFormFieldComponent {
   @Input() field:FormBase<any>;
   @Input() form:FormGroup;
   @Input() tpl:string;
+  // @Input() containerClass?:string='col-md-12';
+
 
 }
 
@@ -29,6 +31,8 @@ class ParentComponent{
   @Input() field:FormBase<any>;
   @Input() form:FormGroup;
   @Input() tpl:string;
+  // @Input() containerClass?:string='col-md-12';
+
   isValid() { return this.form.controls[this.field.key].valid; }
   constructor(){}
 }
@@ -72,6 +76,7 @@ export class textareaForm extends ParentComponent{
 @Component(
   {
     selector:'radio-form',
+    styleUrls:['./fields/radio.css'],
     templateUrl:'./fields/radio.html'
   }
 )

@@ -38,10 +38,12 @@ export class UserFormService {
       {key:'male',  value:'male'},
       {key:'female',  value:'female'}
     ],
+    required: true,
     order: 3
   }),
 
   new TextboxField({
+    // classField:'col-md-6',
     key:'birthdate',
     label:'Birthdate',
     type: 'date',
@@ -62,6 +64,7 @@ export class UserFormService {
     label:'Send For',
     // class:'checkbox-inline',
     class:'radio',
+    required: true,
     options:[
       {
         key:0,

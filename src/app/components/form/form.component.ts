@@ -3,7 +3,7 @@
  */
 
 import { CommonModule } from '@angular/common';
-import {Component,Input} from '@angular/core';
+import {Component,Input,ViewEncapsulation} from '@angular/core';
 import {  FormGroup} from '@angular/forms';
 import { FormBase} from './form.base'
 import { FormControlService} from './form.service'
@@ -12,17 +12,18 @@ import { FormControlService} from './form.service'
   selector:'dynamic-form',
   template:`
 <div>
-  <form [formGroup]="form">
-    <div *ngFor="let field of fields" class="form-row">
-      <df-field [field]="field" [form]="form" [tpl]="tpl"></df-field>
-    </div>
+  <form [formGroup]="form" class="row">
+      <df-field *ngFor="let field of fields" [field]="field" [form]="form" [tpl]="tpl" [class]="containerClass"></df-field>
   </form>
 </div>`,
+  encapsulation:ViewEncapsulation.None,
+  styleUrls:['./form-component.css'],
   providers:  [FormControlService,CommonModule]
 })
 export class DynamicFormComponent{
   @Input() fields: FormBase<any>[] = [];
   @Input() tpl:string='';
+  @Input() containerClass?:string='col-md-12';
   @Input() form: FormGroup;
 
   constructor(private qcs: FormControlService) {

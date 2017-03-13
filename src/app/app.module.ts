@@ -15,8 +15,9 @@ import { ParentService } from './services/parent.service';
 // import { UsersService } from './services/users.service';
 // import { SettingsService } from './services/settings.service';
 
-import { ToastComponent } from './shared/toast/toast.component';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { ToastComponent } from './shared/toast/toast.component';
 // const routing = RouterModule.forRoot([
 //     { path: '',      component: HomeComponent },
 //     { path: 'about', component: AboutComponent }
@@ -34,6 +35,7 @@ import { ToastComponent } from './shared/toast/toast.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     // routing
     appRoutingModule
   ],

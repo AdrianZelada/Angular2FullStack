@@ -9,13 +9,12 @@ import { SharedData } from '../services/shared-data.service';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-// import {FormControlService,DynamicFormComponent,DynamicFormFieldComponent,inputForm,selectForm} from '../components/form'
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form'
 
 
 @NgModule({
-  imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule],
+  imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule],
   declarations: [routedComponents,DynamicFormComponent,FormComponents],
   providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService]
 })

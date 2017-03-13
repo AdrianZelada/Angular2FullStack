@@ -66,7 +66,8 @@ export class UserFormService {
     required: true,
     placeholder: 'Birthdate',
     order: 6
-  }),
+  })
+
 ];
 
   constructor() {}
@@ -87,3 +88,71 @@ export class UserFormService {
 
   }
 }
+
+
+// fields:any[] = [
+//
+//   new TextboxField({
+//     key:'username',
+//     label:'Name',
+//     required: true,
+//     placeholder: 'Username',
+//     order: 1
+//   }),
+//
+//   new TextboxField({
+//     key:'email',
+//     label:'Email',
+//     type: 'email',
+//     required: true,
+//     placeholder: 'Email',
+//     order: 2
+//   }),
+//
+//   new DropdownField({
+//     key:'gender',
+//     label: 'Gender',
+//     options: [
+//       {key:'male',  value:'male'},
+//       {key:'female',  value:'female'}
+//     ],
+//     order: 3
+//   }),
+//
+//   new TextboxField({
+//     key:'birthdate',
+//     label:'Birthdate',
+//     type: 'date',
+//     required: true,
+//     placeholder: 'Birthdate',
+//     order: 4
+//   }),
+//
+//   new TextAreaField({
+//     key:'comment',
+//     label:'Comment',
+//     required: true,
+//     placeholder: 'Comment',
+//     rows: 3
+//   }),
+//   new RadioField({
+//     key:'send',
+//     label:'Send For',
+//     // class:'checkbox-inline',
+//     class:'radio',
+//     options:[
+//       {
+//         key:0,
+//         value:'Sms',
+//         disabled:false,
+//         readonly:false
+//       },
+//       {
+//         key:1,
+//         value:'Email',
+//         disabled:false,
+//         readonly:false
+//       }
+//     ]
+//   })
+// ];

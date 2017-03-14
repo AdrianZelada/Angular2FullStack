@@ -1,12 +1,17 @@
 /**
  * Created by iZel on 3/6/17.
  */
-import { Component, Output, OnInit, EventEmitter} from '@angular/core';
+import { Component, Output, OnInit, EventEmitter,ViewChild,ViewContainerRef,ComponentFactoryResolver} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { UsersService} from  '../services/users.service';
 import { UserFormService} from  '../services/userForm.service';
 import { SharedData } from  '../../services/shared-data.service';
 import { ActivatedRoute, Router} from '@angular/router';
+
+import {modalTest} from '../modals/test';
+import {windowRefService} from '../../components/modal';
+
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -28,15 +33,26 @@ export class UserComponent implements OnInit{
   containerClass:string ='col-md-6';
 
   stateUser:string ='status status';
+
+  @ViewChild('modalTemplate',{read:ViewContainerRef})
+  templateModal :ViewContainerRef ;
+
+  modal : any;
+
+
   constructor(
     public formBuilder: FormBuilder,
     public usersService : UsersService,
     public routes:ActivatedRoute,
     public router:Router,
     private shared:SharedData,
-    private formUse:UserFormService
+    private formUse:UserFormService,
+    private componentRes:ComponentFactoryResolver,
+    private modalService:NgbModal,
+    private windowRef:windowRefService
   ){
     this.stateBtn=false;
+   console.log(this.templateModal)
   }
 
   ngOnInit() {
@@ -58,6 +74,8 @@ export class UserComponent implements OnInit{
     this.form.valueChanges.subscribe((...data:any[]) => {
       console.log(data)
     });
+
+    this.modal = this.componentRes.resolveComponentFactory(modalTest)
 
   }
 
@@ -87,7 +105,11 @@ export class UserComponent implements OnInit{
   }
 
   cancel(){
-    this.router.navigate(['users']);
+    // this.router.navigate(['users']);
+    console.log(this.templateModal)
+    // this.templateModal.createComponent(this.modal);
+    // this.templateModal.createEmbeddedView(this.modal)
+    this.modalService.open(modalTest);
   }
 
   saveBtn(){

@@ -10,13 +10,18 @@ import { SharedData } from '../services/shared-data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form'
+// import { } from '@ng-bootstrap/ng-bootstrap';
+import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form';
+import {windowRefService} from '../components/modal';
+
+import {modalTest} from './modals/test'
 
 
 @NgModule({
-  imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule],
-  declarations: [routedComponents,DynamicFormComponent,FormComponents],
-  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService]
+  imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot()],
+  declarations: [routedComponents,DynamicFormComponent,FormComponents,modalTest],
+  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService],
+  entryComponents:[modalTest]
 })
 export class UsersModule { }
 // avoids having to lazy load with loadChildren: "app/vehicles/vehicle.module#VehicleModule"

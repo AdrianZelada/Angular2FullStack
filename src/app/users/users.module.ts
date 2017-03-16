@@ -8,6 +8,7 @@ import { ParentService } from '../services/parent.service';
 import { SharedData } from '../services/shared-data.service';
 
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { } from '@ng-bootstrap/ng-bootstrap';
@@ -20,7 +21,7 @@ import {modalTest} from './modals/test'
 @NgModule({
   imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot()],
   declarations: [routedComponents,DynamicFormComponent,FormComponents,modalTest],
-  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService],
+  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService,HttpModule],
   entryComponents:[modalTest]
 })
 export class UsersModule { }

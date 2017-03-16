@@ -25,9 +25,14 @@
         <th></th>
       </tr>
       </thead>
-      <tbody *ngIf="users.length === 0">
+      <tbody *ngIf="users.length === 0 && !error">
       <tr>
-        <td colspan="4">There are no cats in the DB. Add a new cat below.</td>
+        <td colspan="6">There are no cats in the DB. Add a new cat below.</td>
+      </tr>
+      </tbody>
+      <tbody *ngIf="error">
+      <tr>
+        <td colspan="6">Error in service ,please call support</td>
       </tr>
       </tbody>
       <tbody *ngIf="!isEditing">

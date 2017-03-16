@@ -22,9 +22,9 @@ export class ParentService {
       .map(res => this.extractData<T[]>(res));
   }
 
-  // $getAll() : Observable<any> {
-  //   return this.http.get(this.model).map(res => res.json());
-  // }
+  $getAllObservable() : Observable<any> {
+    return this.http.get(this.model).map(res => res.json());
+  }
 
   $add(obj):Observable<any>{
     return this.http.post(this.model,obj,this.options)
@@ -47,5 +47,9 @@ export class ParentService {
     let body = res.json ? res.json() : null;
     return <T>(body || {});
   }
+
+
+
+
 
 }

@@ -1,26 +1,20 @@
 /**
- * Created by iZel on 3/6/17.
+ * Created by iZel on 3/17/17.
  */
-import { Subscription } from 'rxjs/Subscription';
-
 import { Component, OnDestroy, OnInit, ViewChild ,ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { UsersService } from '../services/users.service';
 import { CardUser } from '../cards/card-user.component';
 import { SharedData } from '../../services/shared-data.service';
-import { ParentService } from '../../services/parent.service';
-
 import {user} from '../services/user.model'
 
-
 @Component({
-  selector:'users-list',
-  templateUrl:'./users-list.component.html',
-  styleUrls:['./users-list.css']
+    selector:'cards-list',
+    templateUrl:'./cards-list.component.html'
 })
 
-export class UsersListComponent implements OnInit{
+export class CardsList{
 
   @ViewChild('cardUser', {read: ViewContainerRef})
   cardUser:ViewContainerRef;
@@ -36,6 +30,7 @@ export class UsersListComponent implements OnInit{
   users : user[];
   error : boolean =false;
   component:any;
+  cardUsers: any[];
 
   constructor(
     private usersService:UsersService,
@@ -47,20 +42,45 @@ export class UsersListComponent implements OnInit{
     console.log(Http)
     console.log(this.http)
 
-
+    this.cardUsers=[];
   }
 
   ngOnInit(){
+    this.cardUsers=[];
     this.getUsers();
+
   }
 
   getUsers(){
+    let some = this;
     this.isLoading = true;
     this.usersService.$getAll<user>().subscribe(
       (data)=>{
         this.users=data;
         console.log(data)
         this.isLoading = false;
+
+        let fist =this.users[0]
+        this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
+        this.users.forEach((user)=>{
+          let card=this.cardUser.createComponent(this.component)
+          card.instance['User']=user;
+          this.cardUsers.push(card)
+        });
+
+        this.cardUsers.forEach((card)=>{
+          // card.say();
+            card['_component'].say()
+        })
+
+
+
+        // this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
+
+
+        // this.cardUsers.push(this.componentFactoryResolver.resolveComponentFactory(CardUser));
+
+
       },
       (error)=>{
         console.log(error);
@@ -87,12 +107,11 @@ export class UsersListComponent implements OnInit{
   }
 
   viewUser(user){
-    this.router.navigate(['users/cards']);
-    // console.log(user)
+    console.log(user)
+    this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
+    let card=this.cardUser.createComponent(this.component)
     // this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
-    // let card=this.cardUser.createComponent(this.component)
-    // // this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
-    // card.instance['User']=user;
+    card.instance['User']=user;
   }
 
   deleteUser(user){

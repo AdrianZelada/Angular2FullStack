@@ -1,0 +1,11 @@
+<div class="card-header">
+  <h4 class="col-md-10 header-title" >User  ({{User.name}} {{User.lastName}})  </h4>
+  <button class="btn btn-sm btn-success col-md-2" (click)="editUser(User)"><i class="fa fa-plus"></i> Edit </button>
+</div>
+<!--<h4 class="card-header">Current Users ({{users.length}}) </h4>-->
+<div class="card-block">
+  <p>{{User | json}}</p>
+</div>
+
+
+

@@ -6,6 +6,7 @@ import { UsersService } from './services/users.service';
 import { UserFormService } from './services/userForm.service';
 import { ParentService } from '../services/parent.service';
 import { SharedData } from '../services/shared-data.service';
+import { CardUser } from '../users/cards/card-user.component';
 
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -22,7 +23,7 @@ import {modalTest} from './modals/test'
   imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot()],
   declarations: [routedComponents,DynamicFormComponent,FormComponents,modalTest],
   providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService,HttpModule],
-  entryComponents:[modalTest]
+  entryComponents:[modalTest,CardUser]
 })
 export class UsersModule { }
 // avoids having to lazy load with loadChildren: "app/vehicles/vehicle.module#VehicleModule"

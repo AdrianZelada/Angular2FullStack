@@ -34,7 +34,10 @@ export class ParentService {
     return this._curryHttp({
       method:'GET'
     }).retryWhen(this._retryStrategy());
+
+
   }
+
 
   $add(obj):Observable<any>{
 
@@ -67,8 +70,6 @@ export class ParentService {
 
 
   static request (options:RequestOptionsArgs,http :Http): Observable<any>{
-    // let httpSer = ParentService.injector.NULL.get(Http)
-
     let parent = new ParentService(http,'');
     return parent._curryHttp(options)
       .retryWhen(parent._retryStrategy());

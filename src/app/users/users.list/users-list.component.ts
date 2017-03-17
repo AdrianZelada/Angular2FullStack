@@ -47,23 +47,7 @@ export class UsersListComponent implements OnInit{
 
   getUsers(){
     this.isLoading = true;
-    // this.usersService.$getAll<user>().subscribe(
-    //   (data)=>{
-    //     this.users=data;
-    //     console.log(data)
-    //     this.isLoading = false;
-    //   },
-    //   (error)=>{
-    //     console.log(error);
-    //     this.users=[];
-    //     this.error=true;
-    //     this.isLoading = false;
-    //   })
-
-    ParentService.request({
-      url:'api/users',
-      method:'get'
-    },this.http).subscribe(
+    this.usersService.$getAll<user>().subscribe(
       (data)=>{
         this.users=data;
         console.log(data)
@@ -74,22 +58,8 @@ export class UsersListComponent implements OnInit{
         this.users=[];
         this.error=true;
         this.isLoading = false;
-      })
-    // this.usersService.service({
-    //   url:'api/users',
-    //   method:'get'
-    // }).subscribe(
-    //   (data)=>{
-    //     this.users=data;
-    //     console.log(data)
-    //     this.isLoading = false;
-    //   },
-    //   (error)=>{
-    //     console.log(error);
-    //     this.users=[];
-    //     this.error=true;
-    //     this.isLoading = false;
-    //   })
+      });
+
   }
 
   addUser(){

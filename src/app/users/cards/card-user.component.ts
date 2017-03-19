@@ -3,7 +3,6 @@
  */
 import {Component,Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {user} from '../services/user.model';
 import { SharedData } from '../../services/shared-data.service';
 
 @Component({

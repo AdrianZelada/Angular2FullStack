@@ -19,9 +19,6 @@ export class CardsList{
   @ViewChild('cardUser', {read: ViewContainerRef})
   cardUser:ViewContainerRef;
 
-
-  // @ViewChild('cardUser') private cardUser : CardUser;
-
   isLoading:boolean = true;
   isEditing = false;
 
@@ -69,18 +66,8 @@ export class CardsList{
         });
 
         this.cardUsers.forEach((card)=>{
-          // card.say();
             card['_component'].say()
         })
-
-
-
-        // this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
-
-
-        // this.cardUsers.push(this.componentFactoryResolver.resolveComponentFactory(CardUser));
-
-
       },
       (error)=>{
         console.log(error);
@@ -110,7 +97,6 @@ export class CardsList{
     console.log(user)
     this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
     let card=this.cardUser.createComponent(this.component)
-    // this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
     card.instance['User']=user;
   }
 

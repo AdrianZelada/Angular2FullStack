@@ -105,10 +105,7 @@ export class UserComponent implements OnInit{
   }
 
   cancel(){
-    // this.router.navigate(['users']);
     console.log(this.templateModal)
-    // this.templateModal.createComponent(this.modal);
-    // this.templateModal.createEmbeddedView(this.modal)
     this.modalService.open(modalTest);
   }
 

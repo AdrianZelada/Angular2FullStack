@@ -6,7 +6,7 @@ import {Component} from '@angular/core'
 @Component({
   template:`
 <div>
-<p>test</p>
+  <p>test</p>
 </div>`
 })
 

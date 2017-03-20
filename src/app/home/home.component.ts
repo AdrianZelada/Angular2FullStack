@@ -75,18 +75,6 @@ export class HomeComponent implements OnInit {
       error => console.log(error),
       () => this.isLoading = false
     );
-    this.settingsService.$getAll().subscribe(
-      (data)=>{
-        console.log(data)
-      });
-    //
-    // this.settingsService.getAll().subscribe(
-    //   ()=>{
-    //     this.usersService.getAll();
-    //   },
-    //   error => console.log(error),
-    //   () => this.isLoading = false
-    // );
   }
 
   addUser(){

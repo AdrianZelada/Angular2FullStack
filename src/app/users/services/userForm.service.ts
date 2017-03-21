@@ -6,8 +6,6 @@ import { Injectable } from '@angular/core';
 
 import { FormBase, TextboxField, DropdownField ,TextAreaField,RadioField} from '../../components/form';
 
-//////////////////////////////////////////////////
-
 @Injectable()
 export class UserFormService {
 

@@ -8,15 +8,19 @@ import { SharedData } from '../../services/shared-data.service';
 @Component({
   selector:'card-user',
   templateUrl:'./card-user.component.html',
+  styleUrls: ['./card-user.css'],
+  host:{
+    '[class.col-md-6]':'classStyle'
+  }
 })
 
 export class CardUser{
   @Input() User;
-
+  classStyle:boolean=true;
 
   constructor(private router :Router,
               private shared : SharedData){
-
+    this.classStyle=true;
   }
 
   editUser(user){
@@ -25,7 +29,6 @@ export class CardUser{
         id:user.sid
       }
     });
-
     this.shared.setData(user)
   }
 

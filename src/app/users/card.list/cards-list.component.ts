@@ -11,7 +11,8 @@ import {user} from '../services/user.model'
 
 @Component({
     selector:'cards-list',
-    templateUrl:'./cards-list.component.html'
+    templateUrl:'./cards-list.component.html',
+    styleUrls: ['./card-list.component.css']
 })
 
 export class CardsList{

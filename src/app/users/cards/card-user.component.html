@@ -1,10 +1,48 @@
 <div class="card-header">
-  <h4 class="col-md-10 header-title" >User  ({{User.name}} {{User.lastName}})  </h4>
-  <button class="btn btn-sm btn-success col-md-2" (click)="editUser(User)"><i class="fa fa-plus"></i> Edit </button>
+  <div class="row">
+    <h4 class="col-md-9 header-title" >User  ({{User.name}} {{User.lastName}})  </h4>
+    <div class="col-md-3">
+      <button class="btn btn-sm btn-warning card-edit" (click)="editUser(User)"><i class="fa fa-pencil"></i> Edit </button>
+    </div>
+  </div>
 </div>
 <!--<h4 class="card-header">Current Users ({{users.length}}) </h4>-->
-<div class="card-block">
-  <p>{{User | json}}</p>
+<div class="card-block row">
+  <div class="col-md-4 content-img">
+    <img class="card-img" src="assets/Icon-user.png" alt="User" >
+  </div>
+  <div class="col-md-8 row">
+    <div class="col-md-6">
+      <p>Name: </p>
+    </div>
+    <div class="col-md-6">
+      <p>{{User.name}}</p>
+    </div>
+    <div class="col-md-6">
+      <p>LastName: </p>
+    </div>
+    <div class="col-md-6">
+      <p>{{User.lastName}}</p>
+    </div>
+    <div class="col-md-6">
+      <p>Nick: </p>
+    </div>
+    <div class="col-md-6">
+      <p>{{User.nickName}}</p>
+    </div>
+    <div class="col-md-6">
+      <p>Email: </p>
+    </div>
+    <div class="col-md-6">
+      <p>{{User.email}}</p>
+    </div>
+    <div class="col-md-6">
+      <p>Birthday: </p>
+    </div>
+    <div class="col-md-6">
+      <p>{{User.birthday}}</p>
+    </div>
+  </div>
 </div>
 
 

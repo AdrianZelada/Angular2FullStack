@@ -1,0 +1,8 @@
+.color-nav{
+  display: block;
+}
+.color-nav >a{
+  color:white;
+  width: 150px;
+  float: left;
+}

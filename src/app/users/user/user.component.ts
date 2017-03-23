@@ -1,8 +1,9 @@
 /**
  * Created by iZel on 3/6/17.
  */
-import { Component, Output, OnInit, EventEmitter,ViewChild,ViewContainerRef,ComponentFactoryResolver} from '@angular/core';
+import { Component, OnInit, EventEmitter,ViewChild,ViewContainerRef,ComponentFactoryResolver} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { Location} from '@angular/common';
 import { UsersService} from  '../services/users.service';
 import { UserFormService} from  '../services/userForm.service';
 import { SharedData } from  '../../services/shared-data.service';
@@ -49,6 +50,7 @@ export class UserComponent implements OnInit{
     private formUse:UserFormService,
     private componentRes:ComponentFactoryResolver,
     private modalService:NgbModal,
+    private location:Location,
     private windowRef:windowRefService
   ){
     this.stateBtn=false;
@@ -105,8 +107,9 @@ export class UserComponent implements OnInit{
   }
 
   cancel(){
-    console.log(this.templateModal)
-    this.modalService.open(modalTest);
+    // console.log(this.templateModal)
+    // this.modalService.open(modalTest);
+    this.location.back();
   }
 
   saveBtn(){

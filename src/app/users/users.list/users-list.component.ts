@@ -87,7 +87,7 @@ export class UsersListComponent implements OnInit{
   }
 
   viewUser(user){
-    this.router.navigate(['users/cards']);
+    // this.router.navigate(['users/cards']);
     // console.log(user)
     // this.component = this.componentFactoryResolver.resolveComponentFactory(CardUser);
     // let card=this.cardUser.createComponent(this.component)

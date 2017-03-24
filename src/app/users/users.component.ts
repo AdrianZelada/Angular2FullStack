@@ -4,11 +4,22 @@
 import { Component } from '@angular/core';
 
 import { UsersService } from './services/users.service';
+import { AuthService} from '../services/auth.service'
 
 @Component({
-  template: `<router-outlet></router-outlet>`,
+  template: `
+  <router-outlet></router-outlet>
+`,
   providers: [UsersService]
 })
 
 
-export class UsersComponents  {}
+export class UsersComponents  {
+  constructor(private auth:AuthService){
+
+  }
+
+  click(){
+    this.auth.login();
+  }
+}

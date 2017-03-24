@@ -6,11 +6,14 @@ import { UserComponent } from './user/user.component';
 import { CardUser } from './cards/card-user.component';
 import { CardsList} from './card.list/cards-list.component';
 import { UsersComponents} from './users.component';
+import { GuardAuthUser} from '../services/guard-auth.service'
 
 const routes: Routes = [
   {
     path: '',
-    component:UsersComponents ,
+    component:UsersComponents,
+    // canActivate:[GuardAuthUser],
+    // canActivateChild:[GuardAuthUser],
     children: [
       {
         path: '',
@@ -19,6 +22,7 @@ const routes: Routes = [
       {
         path: 'abm',
         component: UserComponent,
+        // canActivate:[GuardAuthUser]
       },
       {
         path: 'cards',

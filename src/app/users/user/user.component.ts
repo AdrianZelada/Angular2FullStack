@@ -7,6 +7,7 @@ import { Location} from '@angular/common';
 import { UsersService} from  '../services/users.service';
 import { UserFormService} from  '../services/userForm.service';
 import { SharedData } from  '../../services/shared-data.service';
+import { AuthService } from  '../../services/auth.service';
 import { ActivatedRoute, Router} from '@angular/router';
 
 import {modalTest} from '../modals/test';
@@ -39,7 +40,7 @@ export class UserComponent implements OnInit{
   templateModal :ViewContainerRef ;
 
   modal : any;
-
+  isUser:boolean=true;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -51,10 +52,13 @@ export class UserComponent implements OnInit{
     private componentRes:ComponentFactoryResolver,
     private modalService:NgbModal,
     private location:Location,
+    private authUser:AuthService,
     private windowRef:windowRefService
   ){
     this.stateBtn=false;
    console.log(this.templateModal)
+
+    this.isUser=this.authUser.isLogin()
   }
 
   ngOnInit() {

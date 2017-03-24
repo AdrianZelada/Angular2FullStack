@@ -22,6 +22,7 @@ import { ToastComponent } from './shared/toast/toast.component';
 //     { path: '',      component: HomeComponent },
 //     { path: 'about', component: AboutComponent }
 // ]);
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ToastComponent } from './shared/toast/toast.component';
   providers: [
     // DataService,
     ParentService,
+    AuthService,
     // UsersService,
     // SettingsService,
     ToastComponent

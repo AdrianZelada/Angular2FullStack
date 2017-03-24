@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 import { UsersService } from '../services/users.service';
 import { CardUser } from '../cards/card-user.component';
 import { SharedData } from '../../services/shared-data.service';
+import { AuthService } from '../../services/auth.service';
 import { ParentService } from '../../services/parent.service';
 
 import {user} from '../services/user.model'
@@ -41,6 +42,7 @@ export class UsersListComponent implements OnInit{
     private usersService:UsersService,
     private router:Router,
     private http:Http,
+    private auth:AuthService,
     private componentFactoryResolver: ComponentFactoryResolver,
     public shared:SharedData
   ){
@@ -101,5 +103,9 @@ export class UsersListComponent implements OnInit{
         this.getUsers();
       }
     )
+  }
+
+  login(){
+    this.auth.login();
   }
 }

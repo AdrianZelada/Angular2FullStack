@@ -5,7 +5,7 @@
       <div class="form-group " style="margin-top: 10px;">
         <dynamic-form [tpl]="styleForm" [fields]="fields" [form]="form" [containerClass]="containerClass"></dynamic-form>
         <div class="form-group" style="text-align: center">
-          <button class="btn btn-primary" (click)="addUser()"  [disabled]="!form.valid"><i class="fa fa-floppy-o"></i> {{stateBtn ? 'Edit' : 'Add'}}</button>
+          <button class="btn btn-primary" (click)="addUser()"  [disabled]="!form.valid" *ngIf="isUser"><i class="fa fa-floppy-o"></i> {{stateBtn ? 'Edit' : 'Add'}}</button>
           <button class="btn btn-warning" (click)="cancel()" ><i class="fa fa-backward"></i> Cancel</button>
         </div>
       </div>

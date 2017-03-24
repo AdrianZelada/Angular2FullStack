@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { routedComponents, UsersRoutingModule } from './users.routing';
 
+import { GuardAuthUser } from '../services/guard-auth.service';
+// import { AuthService } from '../services/auth.service';
 import { UsersService } from './services/users.service';
 import { UserFormService } from './services/userForm.service';
 import { ParentService } from '../services/parent.service';
@@ -22,7 +24,7 @@ import {modalTest} from './modals/test'
 @NgModule({
   imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot()],
   declarations: [routedComponents,DynamicFormComponent,FormComponents,modalTest],
-  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService,HttpModule],
+  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService,HttpModule,GuardAuthUser],
   entryComponents:[modalTest,CardUser]
 })
 export class UsersModule { }

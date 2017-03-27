@@ -81,9 +81,7 @@ export class UserFormService {
         {key:'0',  value:'cero'},
         {key:'1',  value:'uno'}
       ]
-    )
-    console.log(index)
-
+    );
   }
 }
 

@@ -13,5 +13,4 @@ export class SettingsService extends ParentService{
   constructor(http : Http){
     super(http,'settings');
   }
-
 }

@@ -17,7 +17,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { } from '@ng-bootstrap/ng-bootstrap';
 // import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form';
 
-import { FormDynamicControlModule} from '../components/form/form.module'
+import { FormDynamicControlModule} from '../components/form/form.module';
 import {windowRefService} from '../components/modal';
 
 import {modalTest} from './modals/test'
@@ -25,7 +25,7 @@ import {modalTest} from './modals/test'
 
 @NgModule({
   imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot(),FormDynamicControlModule],
-  declarations: [routedComponents,FormDynamicControlModule,modalTest],
+  declarations: [routedComponents,modalTest],
   providers: [UsersService,ParentService,SharedData,UserFormService,windowRefService,HttpModule,GuardAuthUser],
   entryComponents:[modalTest,CardUser]
 })

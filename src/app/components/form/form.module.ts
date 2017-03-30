@@ -4,7 +4,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms'
+import {FormsModule,ReactiveFormsModule} from '@angular/forms'
 import {AllFormComponents} from './all-form.components'
 import {FormControlService} from './form.service'
 
@@ -12,7 +12,8 @@ import {FormControlService} from './form.service'
   imports:[
     FormsModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports:[
     AllFormComponents,

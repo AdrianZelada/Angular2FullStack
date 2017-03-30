@@ -16,4 +16,4 @@ import {DynamicFormComponent} from './form.component';
 
 
 
-export const AllFormComponents=[FormComponents, DynamicFormComponent] ;
+export const AllFormComponents= [FormComponents, DynamicFormComponent] ;

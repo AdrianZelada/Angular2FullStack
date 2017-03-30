@@ -15,16 +15,18 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { } from '@ng-bootstrap/ng-bootstrap';
-import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form';
+// import {FormControlService,DynamicFormComponent,FormComponents} from '../components/form';
+
+import { FormDynamicControlModule} from '../components/form/form.module'
 import {windowRefService} from '../components/modal';
 
 import {modalTest} from './modals/test'
 
 
 @NgModule({
-  imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot()],
-  declarations: [routedComponents,DynamicFormComponent,FormComponents,modalTest],
-  providers: [UsersService,ParentService,SharedData,FormControlService,UserFormService,windowRefService,HttpModule,GuardAuthUser],
+  imports: [ UsersRoutingModule,CommonModule,FormsModule,ReactiveFormsModule,NgbModule.forRoot(),FormDynamicControlModule],
+  declarations: [routedComponents,FormDynamicControlModule,modalTest],
+  providers: [UsersService,ParentService,SharedData,UserFormService,windowRefService,HttpModule,GuardAuthUser],
   entryComponents:[modalTest,CardUser]
 })
 export class UsersModule { }
